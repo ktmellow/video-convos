@@ -1,0 +1,12 @@
+/* Normalize CSS */
+*, html, body {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    color: #424242;
+    font-family: sans-serif;
+}
+
+html, body {
+    width: 100%;
+}

@@ -90,8 +90,10 @@ export class VideoService {
       return a["time"] - b["time"];
     }
   
-    let response = this.videoResp.sort(compareTime);
-    return response;
+    let responses = this.videoResp.sort(compareTime);
+
+   
+    return responses;
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

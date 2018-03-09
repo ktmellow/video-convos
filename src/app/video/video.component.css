@@ -1,0 +1,43 @@
+.video-container {
+    width: 100%;
+}
+.video-title {
+    font-weight: 300;
+}
+.video {
+    width: 80%;
+}
+
+.transcript-container {
+    text-align: left;
+}
+.bubble-wrap {
+    list-style-type: none;
+    width: 95%;
+}
+.speaker {
+    padding-left: 14px;
+    padding-left: 0.8rem;
+    font-size: 14px;
+    font-size: 0.8rem;
+}
+.speech-bubble {
+    border-radius: 16px;
+    border-radius: 1rem;
+    background-color: rgba(246,246,246,1);
+    padding: 8px 14px;
+    padding: .5rem .8rem;
+    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
+    width: max-content;
+}
+
+
+
+@media (min-width: 600px) {
+    .video {
+        width: 50%;
+        max-width: 600px;
+        max-width: 37.5rem;
+    }
+}

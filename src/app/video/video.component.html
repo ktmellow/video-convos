@@ -7,9 +7,9 @@
   </h1>
   <video
     controls
-    width="200px"
     (timeupdate)="onTimeUpdate()"
-    #videoPlayer>
+    #videoPlayer
+    class="video">
     <source src="https://static.chorus.ai/api/{{id}}.mp4" type="video/mp4">
     Your browser doesn't support HTML5 video.
   </video>
@@ -17,15 +17,15 @@
 <div
   *ngIf="transcript && currentTime"
   class="transcript-container">
-  <ul>
+  <ul class="bubble-wrap">
     <li 
       *ngFor="let speechBubble of transcript" 
       [hidden]="speechBubble.time > currentTime" >
       <div class="speechBubble">
-        <div>
+        <div class="speaker">
           {{speechBubble.speaker}}
         </div>
-        <div>
+        <div class="speech-bubble">
           {{speechBubble.snippet}}
         </div>
       </div>
