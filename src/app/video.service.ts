@@ -4,7 +4,8 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { SpeechBubble } from './speech-bubble';
+import { SpeechBubbles, Speech } from './speech-bubbles';
+import { responseJson } from './response-json';
 
 @Injectable()
 export class VideoService {
@@ -85,15 +86,45 @@ export class VideoService {
   //     )
   // }
 
-  getTranscript(): SpeechBubble[]{
+  getTranscript(): SpeechBubbles[]{
     function compareTime(a: object, b: object) {
       return a["time"] - b["time"];
     }
   
     let responses = this.videoResp.sort(compareTime);
 
-   
-    return responses;
+    // Cumulates speech by same speaker
+    let responsesBySpeaker;
+    responsesBySpeaker = [{
+      "speaker": responses[0]["speaker"],
+      "speech": [{
+        "time": responses[0]["time"],
+        "snippet": responses[0]["snippet"]
+      }]
+    }];
+
+    responses.shift();
+
+    while(responses.length) {
+      if(responsesBySpeaker[responsesBySpeaker.length-1]["speaker"] === responses[0]["speaker"]) {
+        responsesBySpeaker[responsesBySpeaker[responsesBySpeaker.length-1]["speech"].push({
+          "time": responses[0]["time"],
+          "snippet": responses[0]["snippet"]});
+        responses.shift();
+      } else {
+        let speechBubble;
+        speechBubble = {
+          "speaker": responses[0]["speaker"],
+          "speech": [{
+            "time": responses[0]["time"],
+            "snippet": [responses[0]["snippet"]]}]};
+
+        responsesBySpeaker.push(speechBubble);
+        responses.shift();
+      }
+    }
+ console.log(responsesBySpeaker)
+    return responsesBySpeaker;
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

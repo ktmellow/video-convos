@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../video.service';
-import { SpeechBubble } from '../speech-bubble';
+import { SpeechBubbles } from '../speech-bubbles';
 import { HostListener, ViewChild } from '@angular/core';
 
 @Component({
