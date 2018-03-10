@@ -107,7 +107,7 @@ export class VideoService {
 
     while(responses.length) {
       if(responsesBySpeaker[responsesBySpeaker.length-1]["speaker"] === responses[0]["speaker"]) {
-        responsesBySpeaker[responsesBySpeaker[responsesBySpeaker.length-1]["speech"].push({
+        responsesBySpeaker[responsesBySpeaker.length-1]["speech"].push({
           "time": responses[0]["time"],
           "snippet": responses[0]["snippet"]});
         responses.shift();

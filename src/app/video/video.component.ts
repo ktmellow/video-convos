@@ -18,7 +18,7 @@ export class VideoComponent implements OnInit {
     console.log(this.currentTime)
   }
 
-  transcript: SpeechBubble[];
+  transcript: SpeechBubbles[];
   id: string;
   currentTime: number;
 
