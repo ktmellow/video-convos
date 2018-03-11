@@ -1,14 +1,16 @@
 .transcript-container,
 .speaker-wrap {
-  width: 100%;
+    width: 100%;
 }
 
 .video-container {
     width: 100%;
 }
+
 .video-title {
     font-weight: 300;
 }
+
 .video {
     width: 80%;
 }
@@ -17,12 +19,43 @@
     text-align: left;
     width: 100%;
     margin: auto;
-    width: 60%;
+    width: calc(95% - 70px);
 }
 
 .bubble-wrap {
     list-style-type: none;
     padding: 0;
+}
+
+.speaker-wrap {
+    position: relative;
+}
+
+.avatar {
+    display: inline-block;
+    position: relative;
+    bottom: 10px;
+    vertical-align: bottom;
+    border: 1px solid #EE6EFF;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    background: rgba(238, 110, 255, 0.10);
+    position: absolute;
+}
+
+.avatar-right {
+  right: -35px;
+  bottom: 12px;
+}
+
+.avatar-left {
+  left: -35px;
+}
+
+.text-by-speaker {
+    display: inline-block;
+    width: calc(100% - 50px);
 }
 
 .speaker {
@@ -33,9 +66,10 @@
     margin-bottom: 8px;
     margin-bottom: 0.5rem;
 }
+
 .speech-bubble {
-    margin-bottom: 8px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 9.5px;
+    margin-bottom: 0.6rem;
     width: max-content;
 }
 
@@ -44,32 +78,45 @@
     clear: both;
     display: table;
 }
+
 .speaker-wrap:nth-child(even) {
-  float: right;
+    float: right;
 }
+
 .speaker-wrap:nth-child(even) .speech-bubble {
-  text-align: right;
-  width: auto;
+    text-align: right;
+    width: auto;
 }
 
 .speaker-wrap:nth-child(even) .text-by-speaker {
-  float: right;
-  width: auto;
+    float: right;
+    width: auto;
+}
+
+.speaker-wrap:nth-child(even) .avatar-left {
+    display: none;
+}
+
+.speaker-wrap:nth-child(odd) .avatar-right {
+    display: none;
 }
 
 .bubble-text {
-  border-radius: 16px;
-  border-radius: 1rem;
-  padding: 8px 14px;
-  padding: .5rem .8rem;
-  background-color: rgba(246,246,246,1);
+    border-radius: 16px;
+    border-radius: 1rem;
+    padding: 8px 14px;
+    padding: .5rem .8rem;
+    background-color: rgba(246, 246, 246, 1);
 }
-
 
 @media (min-width: 600px) {
     .video {
         width: 50%;
         max-width: 600px;
         max-width: 37.5rem;
+    }
+    .transcript-container {
+      width: 80%;
+      max-width: 900px;
     }
 }

@@ -22,6 +22,7 @@
       *ngFor="let speechBubbles of transcript" 
       [hidden]="speechBubbles['speech'][0]['time'] > currentTime"
       class="speaker-wrap" >
+      <div class="avatar avatar-left">&nbsp;</div>
       <div class="text-by-speaker">
         <div class="speaker">
           {{speechBubbles['speaker']}}
@@ -40,6 +41,7 @@
           </div>
         </div>
       </div>
+      <div class="avatar avatar-right">&nbsp;</div>
     </li>
   </ul>
 </div>
