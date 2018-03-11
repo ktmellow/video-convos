@@ -5,7 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { SpeechBubbles, Speech } from './speech-bubbles';
-import { responseJson } from './response-json';
+import { responseUnit } from './response-unit';
 
 @Injectable()
 export class VideoService {
@@ -74,12 +74,10 @@ export class VideoService {
     }
 ];
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor( private http: HttpClient ) { }
 
 
-  // getTranscript(): Observable<SpeechBubble[]>{
+  // getData(id: String): Observable<SpeechBubble[]>{
   //   return this.http.get<SpeechBubble[]>(this.videoUrl)
   //     .pipe(
   //       catchError(this.handleError('getTranscript', []))
@@ -87,43 +85,58 @@ export class VideoService {
   // }
 
   getTranscript(): SpeechBubbles[]{
-    function compareTime(a: object, b: object) {
-      return a["time"] - b["time"];
-    }
-  
-    let responses = this.videoResp.sort(compareTime);
+    let id = new URLSearchParams(window.location.search).get("id");
 
-    // Cumulates speech by same speaker
-    let responsesBySpeaker;
-    responsesBySpeaker = [{
-      "speaker": responses[0]["speaker"],
+    // Use API when available instead of json mock
+    //  let responsesData = this.getData(id);
+    let responsesData = this.videoResp;
+    return this.organizeSpeech(responsesData);
+  }
+
+  private compareTime(a: object, b: object) {
+    return a["time"] - b["time"];
+  }
+
+  // Sets structure for first bubble by speaker & start speech array full of bubbles
+  private startBubble(response: responseUnit): SpeechBubbles {
+    return {
+      "speaker": response["speaker"],
       "speech": [{
-        "time": responses[0]["time"],
-        "snippet": responses[0]["snippet"]
+        "time": response["time"],
+        "snippet": response["snippet"]
       }]
-    }];
+    };
+  }
 
+  // Sets structure for additional bubble in speech array
+  private anotherBubble(response: responseUnit): Speech {
+    return {
+      "time": response["time"],
+      "snippet": response["snippet"]
+    };
+  }
+
+  // Cumulates speech by same speaker
+  private organizeSpeech(responsesData: responseUnit[]): SpeechBubbles[] {
+    let responses = responsesData.sort(this.compareTime);
+
+    // Sets structure for bubble set by speaker in new array of organized speech bubbles
+    let responsesBySpeaker;
+    responsesBySpeaker = [this.startBubble(responses[0])]
     responses.shift();
 
+    // Adds bubbles by speaker to new array
+    // Adds more bubbles to same speaker if same name
     while(responses.length) {
       if(responsesBySpeaker[responsesBySpeaker.length-1]["speaker"] === responses[0]["speaker"]) {
-        responsesBySpeaker[responsesBySpeaker.length-1]["speech"].push({
-          "time": responses[0]["time"],
-          "snippet": responses[0]["snippet"]});
+        responsesBySpeaker[responsesBySpeaker.length-1]["speech"].push(responses[0]);
         responses.shift();
       } else {
-        let speechBubble;
-        speechBubble = {
-          "speaker": responses[0]["speaker"],
-          "speech": [{
-            "time": responses[0]["time"],
-            "snippet": [responses[0]["snippet"]]}]};
-
-        responsesBySpeaker.push(speechBubble);
+        responsesBySpeaker.push(this.startBubble(responses[0]));
         responses.shift();
       }
     }
- console.log(responsesBySpeaker)
+  
     return responsesBySpeaker;
   }
 

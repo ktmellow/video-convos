@@ -1,4 +1,4 @@
-export class responseJson {
+export class responseUnit {
     snippet: string;
     speaker: string;
     time: number;
