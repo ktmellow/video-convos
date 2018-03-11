@@ -20,15 +20,24 @@
   <ul class="bubble-wrap">
     <li 
       *ngFor="let speechBubbles of transcript" 
-      [hidden]="speechBubbles['speech'][0]['time'] > currentTime" >
-      <div class="speaker">
-        {{speechBubbles['speaker']}}
-      </div>
-      <div class="speechBubble"
-        *ngFor="let bubble of speechBubbles['speech']"
-        [hidden]="bubble['time'] > currentTime">
-        <div class="speech-bubble">
-          {{bubble['snippet']}}
+      [hidden]="speechBubbles['speech'][0]['time'] > currentTime"
+      class="speaker-wrap" >
+      <div class="text-by-speaker">
+        <div class="speaker">
+          {{speechBubbles['speaker']}}
+        </div>
+        <div
+          class="speech-bubble"
+          *ngFor="let bubble of speechBubbles['speech']"
+          [hidden]="bubble['time'] > currentTime">
+          <div class="speaker-wrap">
+
+            <div class="speech-bubble">
+              <span class="bubble-text">
+                  {{bubble['snippet']}}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </li>

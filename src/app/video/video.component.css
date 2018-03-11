@@ -1,3 +1,8 @@
+.transcript-container,
+.speaker-wrap {
+  width: 100%;
+}
+
 .video-container {
     width: 100%;
 }
@@ -10,28 +15,55 @@
 
 .transcript-container {
     text-align: left;
+    width: 100%;
+    margin: auto;
+    width: 60%;
 }
+
 .bubble-wrap {
     list-style-type: none;
-    width: 95%;
+    padding: 0;
 }
+
 .speaker {
     padding-left: 14px;
     padding-left: 0.8rem;
     font-size: 14px;
     font-size: 0.8rem;
+    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 }
 .speech-bubble {
-    border-radius: 16px;
-    border-radius: 1rem;
-    background-color: rgba(246,246,246,1);
-    padding: 8px 14px;
-    padding: .5rem .8rem;
     margin-bottom: 8px;
     margin-bottom: 0.5rem;
     width: max-content;
 }
 
+.speaker-wrap::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.speaker-wrap:nth-child(even) {
+  float: right;
+}
+.speaker-wrap:nth-child(even) .speech-bubble {
+  text-align: right;
+  width: auto;
+}
+
+.speaker-wrap:nth-child(even) .text-by-speaker {
+  float: right;
+  width: auto;
+}
+
+.bubble-text {
+  border-radius: 16px;
+  border-radius: 1rem;
+  padding: 8px 14px;
+  padding: .5rem .8rem;
+  background-color: rgba(246,246,246,1);
+}
 
 
 @media (min-width: 600px) {

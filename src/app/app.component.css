@@ -5,6 +5,7 @@
     text-align: center;
     color: #424242;
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 html, body {
