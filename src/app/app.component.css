@@ -11,3 +11,7 @@
 html, body {
     width: 100%;
 }
+
+li {
+  list-style-type: none;
+}

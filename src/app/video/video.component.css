@@ -1,3 +1,7 @@
+/* TO DO: Learn how to use precompiler with Angular: 2
+   TO DO: Make mixins for reusable CSS like clearfix/floats
+   TO DO: Put company-specific styles in mixins and variables */
+
 .transcript-container,
 .speaker-wrap {
     width: 100%;
@@ -32,10 +36,8 @@
 }
 
 .avatar {
-    display: inline-block;
     position: relative;
     bottom: 10px;
-    vertical-align: bottom;
     border: 1px solid #EE6EFF;
     border-radius: 50%;
     height: 28px;
