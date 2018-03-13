@@ -3,11 +3,10 @@
    TO DO: Put company-specific styles in mixins and variables */
 
 .transcript-container,
-.speaker-wrap {
-    width: 100%;
-}
-
-.video-container {
+.speaker-wrap,
+.video-container,
+.transcript-container,
+.text-by-speaker {
     width: 100%;
 }
 
@@ -21,14 +20,8 @@
 
 .transcript-container {
     text-align: left;
-    width: 100%;
     margin: auto;
     width: calc(95% - 70px);
-}
-
-.bubble-wrap {
-    list-style-type: none;
-    padding: 0;
 }
 
 .speaker-wrap {
@@ -57,7 +50,6 @@
 
 .text-by-speaker {
     display: inline-block;
-    width: calc(100% - 50px);
 }
 
 .speaker {
@@ -67,6 +59,7 @@
     font-size: 0.8rem;
     margin-bottom: 8px;
     margin-bottom: 0.5rem;
+    text-align: left;
 }
 
 .speech-bubble {

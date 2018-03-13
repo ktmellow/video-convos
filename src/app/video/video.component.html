@@ -1,6 +1,5 @@
-<p *ngIf="!id">
-  Enter id of video to see video with conversation bubbles!
-</p>
+<app-no-id class="no-id" *ngIf="!id"></app-no-id>
+
 <div *ngIf="id" class="video-container">
   <h1 class="video-title">
     Moment from meeting with Two Pillars

@@ -1,0 +1,18 @@
+<div class="no-id">
+  <div class="content-block">
+    <div class="directions">
+      <div>Enter id of video to see video with live conversation bubbles!</div>
+      <input
+        type="text"
+        class="id-box"
+        [(ngModel)]="inputId"
+        (keyup)="addQuery($event, inputId)" />
+    </div>
+  
+    <div>or</div>
+  
+    <a class="demo-button" href="?id=4d79041e-f25f-421d-9e5f-3462459b9934">
+      View Demo Here
+    </a>
+  </div>
+  </div>
