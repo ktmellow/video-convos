@@ -1,6 +1,5 @@
-<p *ngIf="!id">
-  Enter id of video to see video with conversation bubbles!
-</p>
+<app-no-id class="no-id" *ngIf="!id"></app-no-id>
+
 <div *ngIf="id" class="video-container">
   <h1 class="video-title">
     Moment from meeting with Two Pillars
@@ -20,17 +19,28 @@
   <ul class="bubble-wrap">
     <li 
       *ngFor="let speechBubbles of transcript" 
-      [hidden]="speechBubbles['speech'][0]['time'] > currentTime" >
-      <div class="speaker">
-        {{speechBubbles['speaker']}}
-      </div>
-      <div class="speechBubble"
-        *ngFor="let bubble of speechBubbles['speech']"
-        [hidden]="bubble['time'] > currentTime">
-        <div class="speech-bubble">
-          {{bubble['snippet']}}
+      [hidden]="speechBubbles['speech'][0]['time'] > currentTime"
+      class="speaker-wrap" >
+      <div class="avatar avatar-left">&nbsp;</div>
+      <div class="text-by-speaker">
+        <div class="speaker">
+          {{speechBubbles['speaker']}}
+        </div>
+        <div
+          class="speech-bubble"
+          *ngFor="let bubble of speechBubbles['speech']"
+          [hidden]="bubble['time'] > currentTime">
+          <div class="speaker-wrap">
+
+            <div class="speech-bubble">
+              <span class="bubble-text">
+                  {{bubble['snippet']}}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="avatar avatar-right">&nbsp;</div>
     </li>
   </ul>
 </div>

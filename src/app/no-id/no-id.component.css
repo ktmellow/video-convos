@@ -1,0 +1,36 @@
+.no-id {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content-block {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: column;
+  height: 200px;
+  text-align: center;
+}
+
+.directions {
+  margin: 1rem;
+}
+
+.id-box {
+  border: solid #424242 1px;
+  margin: 0.75rem;
+  padding: 0.25rem;
+}
+
+.demo-button {
+  padding: 0.5rem;
+  text-decoration: none;
+  border: solid #424242 1px;
+  max-width: 20rem;
+  margin: auto;
+  border-radius: 0.25rem;
+}
+

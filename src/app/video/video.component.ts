@@ -14,30 +14,20 @@ export class VideoComponent implements OnInit {
   @ViewChild('videoPlayer') videoplayer: any;
   @HostListener('timeupdate') onTimeUpdate(){
     this.currentTime = this.videoplayer.nativeElement.currentTime;
-    console.log("updated!")
-    console.log(this.currentTime)
   }
 
-  transcript: SpeechBubble[];
+  transcript: SpeechBubbles[];
   id: string;
   currentTime: number;
 
-  constructor(private videoService: VideoService) {
-
-  }
+  constructor(private videoService: VideoService) {}
   
   ngOnInit() {
     this.getData();
   }
 
-  // getTranscript(): void{
-  //  let id = new URLSearchParams(window.location.search).get("id");
-  //   this.videoService.getTranscript()
-  //     .subscribe(transcript => this.transcript = transcript);
-  // }
-
   getData(): void {
-    // Sets ID for video render and for getting transcript
+    // Sets ID for video render and for transcript AJAX call
     let id = new URLSearchParams(window.location.search).get("id");
     if(id) this.id = id;
   

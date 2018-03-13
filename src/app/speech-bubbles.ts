@@ -1,5 +1,4 @@
 export class SpeechBubbles {
-    snippet: string;
     speaker: string;
     speech: Speech[];
 }

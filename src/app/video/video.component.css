@@ -1,43 +1,117 @@
-.video-container {
+/* TO DO: Learn how to use precompiler with Angular: 2
+   TO DO: Make mixins for reusable CSS like clearfix/floats
+   TO DO: Put company-specific styles in mixins and variables */
+
+.transcript-container,
+.speaker-wrap,
+.video-container,
+.transcript-container,
+.text-by-speaker {
     width: 100%;
 }
+
 .video-title {
     font-weight: 300;
 }
+
 .video {
     width: 80%;
 }
 
 .transcript-container {
     text-align: left;
+    margin: auto;
+    width: calc(95% - 70px);
 }
-.bubble-wrap {
-    list-style-type: none;
-    width: 95%;
+
+.speaker-wrap {
+    position: relative;
 }
+
+.avatar {
+    position: relative;
+    bottom: 10px;
+    border: 1px solid #EE6EFF;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    background: rgba(238, 110, 255, 0.10);
+    position: absolute;
+}
+
+.avatar-right {
+  right: -35px;
+  bottom: 12px;
+}
+
+.avatar-left {
+  left: -35px;
+}
+
+.text-by-speaker {
+    display: inline-block;
+}
+
 .speaker {
     padding-left: 14px;
     padding-left: 0.8rem;
     font-size: 14px;
     font-size: 0.8rem;
-}
-.speech-bubble {
-    border-radius: 16px;
-    border-radius: 1rem;
-    background-color: rgba(246,246,246,1);
-    padding: 8px 14px;
-    padding: .5rem .8rem;
     margin-bottom: 8px;
     margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.speech-bubble {
+    margin-bottom: 9.5px;
+    margin-bottom: 0.6rem;
     width: max-content;
 }
 
+.speaker-wrap::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
+.speaker-wrap:nth-child(even) {
+    float: right;
+}
+
+.speaker-wrap:nth-child(even) .speech-bubble {
+    text-align: right;
+    width: auto;
+}
+
+.speaker-wrap:nth-child(even) .text-by-speaker {
+    float: right;
+    width: auto;
+}
+
+.speaker-wrap:nth-child(even) .avatar-left {
+    display: none;
+}
+
+.speaker-wrap:nth-child(odd) .avatar-right {
+    display: none;
+}
+
+.bubble-text {
+    border-radius: 16px;
+    border-radius: 1rem;
+    padding: 8px 14px;
+    padding: .5rem .8rem;
+    background-color: rgba(246, 246, 246, 1);
+}
 
 @media (min-width: 600px) {
     .video {
         width: 50%;
         max-width: 600px;
         max-width: 37.5rem;
+    }
+    .transcript-container {
+      width: 80%;
+      max-width: 900px;
     }
 }
