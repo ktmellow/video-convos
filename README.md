@@ -5,7 +5,7 @@
 * Interactive chat transcript chat bubbles appear in real time, in sync with the speakers. 
 
 ## Mockup:
-![Mockup][/Users/thrynn/video-convos/src/assets/mockup/page-1-sharing-modal.png]
+![Mockup](Users/thrynn/video-convos/src/assets/mockup/page-1-sharing-modal.png)
 
 ## To do:
 Update tests
